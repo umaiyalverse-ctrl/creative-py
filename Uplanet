@@ -1,0 +1,147 @@
+import time
+
+planets = {
+    "mercury": {"travel_days": 97, "temp_c": 167, "gravity": 0.38, "survival": "DANGER", "fact": "Mercury has no atmosphere — you'd roast in the day and freeze at night."},
+    "venus": {"travel_days": 183, "temp_c": 465, "gravity": 0.9, "survival": "IMPOSSIBLE", "fact": "Venus is hotter than Mercury and rains sulfuric acid. Not fun."},
+    "mars": {"travel_days": 259, "temp_c": -60, "gravity": 0.38, "survival": "POSSIBLE WITH GEAR", "fact": "Mars is humanity's best bet! Elon Musk is already planning to go there."},
+    "jupiter": {"travel_days": 600, "temp_c": -110, "gravity": 2.53, "survival": "IMPOSSIBLE", "fact": "Jupiter has no solid surface — you'd just sink into gas forever."},
+    "saturn": {"travel_days": 1300, "temp_c": -140, "gravity": 1.07, "survival": "IMPOSSIBLE", "fact": "Saturn's rings are made of ice and rock — beautiful but deadly up close."},
+    "uranus": {"travel_days": 2720, "temp_c": -195, "gravity": 0.89, "survival": "IMPOSSIBLE", "fact": "Uranus rotates on its side — it basically rolls around the Sun."},
+    "neptune": {"travel_days": 4330, "temp_c": -200, "gravity": 1.14, "survival": "IMPOSSIBLE", "fact": "Neptune has winds of 2,100 km/h — the fastest in the solar system!"},
+    "moon": {"travel_days": 3, "temp_c": -20, "gravity": 0.165, "survival": "POSSIBLE WITH GEAR", "fact": "Humans already walked on the Moon in 1969. You could be next!"},
+    "uplanet": {"travel_days": 7, "temp_c": 24, "gravity": 1.0, "survival": "PERFECT", "fact": "Uplanet is the only known planet in the universe with a perfect human survival rating of 100%.", "special": True}
+}
+
+def slow_print(text, delay=0.03):
+    for char in text:
+        print(char, end='', flush=True)
+        time.sleep(delay)
+    print()
+
+def calculate_weight(earth_weight, gravity_factor):
+    return round(earth_weight * gravity_factor, 2)
+
+def survival_badge(status):
+    if status == "IMPOSSIBLE":
+        return "💀 IMPOSSIBLE — Humans cannot survive here."
+    elif status == "DANGER":
+        return "⚠️  HIGH DANGER — Extreme conditions. Mission risky."
+    elif status == "PERFECT":
+        return "🌟 PERFECT — Uplanet was literally made for humans!"
+    else:
+        return "✅ POSSIBLE — With the right gear, you can survive!"
+
+def uplanet_reveal():
+    time.sleep(0.5)
+    print()
+    slow_print("   ⚠️  CLASSIFIED INFORMATION UNLOCKED...", 0.04)
+    time.sleep(1)
+    slow_print("   🔐 NOVA SPECIAL REPORT: U P L A N E T", 0.05)
+    time.sleep(0.5)
+    print()
+    slow_print("╔═══════════════════════════════════════════════════╗")
+    slow_print("║       🌍✨ WELCOME TO UPLANET ✨🌍               ║")
+    slow_print("║   The Most Legendary Planet in the Universe       ║")
+    slow_print("╚═══════════════════════════════════════════════════╝")
+    print()
+    time.sleep(0.5)
+    features = [
+        ("🛡️  ASTEROID SHIELD", "Uplanet has a living magnetic forcefield called the UMASHIELD.\n   It detects incoming asteroids from 10,000 km away and fires\n   plasma pulses that vaporize them into harmless stardust. ✨\n   No asteroid has EVER touched Uplanet in 4 billion years."),
+        ("☀️  UV PROTECTION", "Uplanet has THREE ozone layers instead of Earth's one.\n   The outermost layer is made of crystallized neon gas that\n   literally glows purple at sunset — blocking 99.9% of UV rays.\n   You can stare at the sky all day with zero sunburn. 💜"),
+        ("🌊  OCEANS", "Uplanet's oceans glow electric blue at night due to\n   bioluminescent minerals. The water is naturally purified\n   by underwater crystal formations — safe to drink directly! 💧"),
+        ("🌱  OXYGEN LEVEL", "Oxygen levels are 10% richer than Earth's.\n   One breath on Uplanet = energy boost for 2 hours.\n   Athletes from across the galaxy train here. 💪"),
+        ("🌡️  TEMPERATURE", "Always a perfect 24°C — like Chennai weather but\n   without the humidity. Cool breeze 24/7. AC not needed. 😄"),
+        ("🌙  TWIN MOONS", "Uplanet has 2 moons — Uma & Yal — that orbit in\n   perfect sync. Every night has a double moonrise.\n   The most romantic sky in the entire universe. 🌙🌙"),
+        ("⚡  ENERGY SOURCE", "Uplanet runs on pure solar-crystal energy.\n   Zero pollution. Zero global warming. The sky is always\n   a crisp, clean violet-blue — no smog, ever. 🔮"),
+        ("🧬  GRAVITY", "Gravity is identical to Earth's — so you weigh exactly\n   the same! No bone loss, no floating away, no motion sickness.\n   Just pure, comfortable living. 🏡"),
+    ]
+    for title, desc in features:
+        time.sleep(0.4)
+        slow_print(f"   {title}", 0.02)
+        slow_print(f"   {desc}", 0.01)
+        print()
+    slow_print("╔═══════════════════════════════════════════════════╗")
+    slow_print("║  🏆 UPLANET SURVIVAL RATING: 100% — PERFECT      ║")
+    slow_print("║  🌟 Discovered & Named by: Commander Umaiyal      ║")
+    slow_print("║  📍 Location: Beyond the Andromeda Galaxy         ║")
+    slow_print("║  🚀 Travel Time from Earth: Only 7 days!          ║")
+    slow_print("╚═══════════════════════════════════════════════════╝")
+    print()
+
+def main():
+    print()
+    slow_print("=" * 55)
+    slow_print("   🚀 Welcome to N.O.V.A — Space Mission Planner 🚀")
+    slow_print("   Navigation & Orbital Voyage Assistant")
+    slow_print("=" * 55)
+    print()
+    name = input("   Enter your astronaut name: ").strip()
+    if name == "":
+        name = "Astronaut"
+    print()
+    slow_print(f"   Welcome aboard, Commander {name}! 🌌")
+    print()
+    while True:
+        try:
+            weight = float(input("   Enter your weight on Earth (in kg): "))
+            if weight <= 0:
+                print("   Please enter a valid weight!")
+                continue
+            break
+        except ValueError:
+            print("   Please enter a number!")
+    print()
+    slow_print("   Available destinations:")
+    print()
+    for planet in planets:
+        print(f"   🪐 {planet.capitalize()}")
+    print()
+    while True:
+        destination = input("   Where do you want to go? ").strip().lower()
+        if destination in planets:
+            break
+        else:
+            print(f"   '{destination}' not found! Please choose from the list above.")
+    data = planets[destination]
+    if destination == "uplanet":
+        uplanet_reveal()
+    print()
+    slow_print("   ⏳ Generating your mission briefing...", 0.02)
+    time.sleep(1)
+    print()
+    slow_print("=" * 55)
+    slow_print(f"   🛸 MISSION BRIEFING — DESTINATION: {destination.upper()}")
+    slow_print("=" * 55)
+    print()
+    slow_print(f"   👨‍🚀 Commander     : {name}")
+    time.sleep(0.3)
+    slow_print(f"   🌍 Departing     : Earth")
+    time.sleep(0.3)
+    slow_print(f"   🪐 Destination   : {destination.capitalize()}")
+    time.sleep(0.3)
+    slow_print(f"   📅 Travel Time   : {data['travel_days']} days ({round(data['travel_days']/365, 1)} years)")
+    time.sleep(0.3)
+    slow_print(f"   🌡️  Temperature   : {data['temp_c']}°C")
+    time.sleep(0.3)
+    slow_print(f"   ⚖️  Your weight   : {calculate_weight(weight, data['gravity'])} kg on {destination.capitalize()}")
+    time.sleep(0.3)
+    slow_print(f"   🧬 Survival      : {survival_badge(data['survival'])}")
+    time.sleep(0.3)
+    print()
+    slow_print(f"   📡 NOVA SAYS: {data['fact']}")
+    print()
+    slow_print("=" * 55)
+    print()
+    slow_print(f"   Safe travels, Commander {name}! 🌠")
+    slow_print("   The universe is waiting for you.")
+    slow_print("=" * 55)
+    print()
+    again = input("   Plan another mission? (yes / no): ").strip().lower()
+    if again == "yes":
+        main()
+    else:
+        print()
+        slow_print("   🚀 Mission Control signing off. Goodbye, Commander!")
+        print()
+
+main()
